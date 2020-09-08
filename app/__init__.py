@@ -15,6 +15,9 @@ def create_app(environment='development'):
 
     app = f.flask
 
+    from .views import sample_page
+    app.register_blueprint(sample_page, url_prefix='/views')
+
     if app.config['TESTING']:  # pragma: no cover
         # Setup app for testing
         @app.before_first_request
